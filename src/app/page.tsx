@@ -20,13 +20,19 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useEffect, useState } from "react"
+import { H1, H2, H3, H4, P, P16, GradientText, SectionTitle } from "@/components/ui/typography"
 
 export default function Portfolio() {
+  // Initialize with null values to prevent hydration mismatch
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [scrollY, setScrollY] = useState(0)
   const [isDark, setIsDark] = useState(true)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    // Mark component as mounted to prevent hydration mismatch
+    setIsMounted(true)
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
@@ -143,74 +149,76 @@ export default function Portfolio() {
 
   return (
     <div className={`min-h-screen ${themeClasses.bg} relative overflow-hidden transition-all duration-500`}>
-      {/* Artistic Background Elements */}
-      <div className="fixed inset-0 pointer-events-none">
-        {/* Animated gradient orbs */}
-        <div
-          className={`absolute w-96 h-96 ${
-            isDark
-              ? "bg-gradient-to-r from-orange-500/20 to-red-500/20"
-              : "bg-gradient-to-r from-orange-300/30 to-red-300/30"
-          } rounded-full blur-3xl`}
-          style={{
-            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
-            top: "10%",
-            left: "10%",
-          }}
-        />
-        <div
-          className={`absolute w-80 h-80 ${
-            isDark
-              ? "bg-gradient-to-r from-purple-500/20 to-pink-500/20"
-              : "bg-gradient-to-r from-purple-300/30 to-pink-300/30"
-          } rounded-full blur-3xl`}
-          style={{
-            transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`,
-            top: "60%",
-            right: "10%",
-          }}
-        />
-        <div
-          className={`absolute w-64 h-64 ${
-            isDark
-              ? "bg-gradient-to-r from-yellow-500/20 to-orange-500/20"
-              : "bg-gradient-to-r from-yellow-300/30 to-orange-300/30"
-          } rounded-full blur-3xl`}
-          style={{
-            transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`,
-            bottom: "20%",
-            left: "20%",
-          }}
-        />
-
-        {/* Geometric patterns */}
-        <div className="absolute inset-0">
-          <svg className={`w-full h-full ${isDark ? "opacity-10" : "opacity-5"}`} viewBox="0 0 100 100">
-            <defs>
-              <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100" height="100" fill="url(#grid)" className="text-orange-500" />
-          </svg>
-        </div>
-
-        {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
+      {/* Artistic Background Elements - Only render when mounted to prevent hydration mismatch */}
+      {isMounted && (
+        <div className="fixed inset-0 pointer-events-none">
+          {/* Animated gradient orbs */}
           <div
-            key={i}
-            className={`absolute w-2 h-2 ${
-              isDark ? "bg-orange-500/30" : "bg-orange-400/40"
-            } rounded-full animate-pulse`}
+            className={`absolute w-96 h-96 ${
+              isDark
+                ? "bg-gradient-to-r from-orange-500/20 to-red-500/20"
+                : "bg-gradient-to-r from-orange-300/30 to-red-300/30"
+            } rounded-full blur-3xl`}
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 2}s`,
-              animationDuration: `${2 + Math.random() * 3}s`,
+              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+              top: "10%",
+              left: "10%",
             }}
           />
-        ))}
-      </div>
+          <div
+            className={`absolute w-80 h-80 ${
+              isDark
+                ? "bg-gradient-to-r from-purple-500/20 to-pink-500/20"
+                : "bg-gradient-to-r from-purple-300/30 to-pink-300/30"
+            } rounded-full blur-3xl`}
+            style={{
+              transform: `translate(${mousePosition.x * -0.01}px, ${mousePosition.y * -0.01}px)`,
+              top: "60%",
+              right: "10%",
+            }}
+          />
+          <div
+            className={`absolute w-64 h-64 ${
+              isDark
+                ? "bg-gradient-to-r from-yellow-500/20 to-orange-500/20"
+                : "bg-gradient-to-r from-yellow-300/30 to-orange-300/30"
+            } rounded-full blur-3xl`}
+            style={{
+              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`,
+              bottom: "20%",
+              left: "20%",
+            }}
+          />
+
+          {/* Geometric patterns */}
+          <div className="absolute inset-0">
+            <svg className={`w-full h-full ${isDark ? "opacity-10" : "opacity-5"}`} viewBox="0 0 100 100">
+              <defs>
+                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#grid)" className="text-orange-500" />
+            </svg>
+          </div>
+
+          {/* Floating particles */}
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className={`absolute w-2 h-2 ${
+                isDark ? "bg-orange-500/30" : "bg-orange-400/40"
+              } rounded-full animate-pulse`}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${2 + Math.random() * 3}s`,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Navigation */}
       <nav
@@ -255,42 +263,35 @@ export default function Portfolio() {
               {/* Artistic text treatment */}
               <div className="space-y-6">
                 <div className="relative">
-                  <h1
-                    className={`text-6xl lg:text-8xl font-black text-transparent bg-clip-text ${
+                  <H1
+                    className={
                       isDark
                         ? "bg-gradient-to-r from-white via-orange-500 to-red-500"
                         : "bg-gradient-to-r from-slate-900 via-orange-600 to-red-600"
-                    } leading-tight`}
+                    }
+                    animate
                   >
                     Frontend
-                  </h1>
-                  <div
-                    className={`absolute -top-4 -left-4 w-20 h-20 border-2 ${
-                      isDark ? "border-orange-500/30" : "border-orange-400/50"
-                    } rounded-full animate-spin`}
-                  />
+                  </H1>
                 </div>
 
-                <h2 className={`text-4xl lg:text-5xl font-bold ${themeClasses.text} relative`}>
+                <H2 className={themeClasses.text} gradient={false}>
                   Developer
                   <span className="absolute -right-8 top-0 text-orange-500 animate-bounce">✦</span>
-                </h2>
+                </H2>
 
                 <div className="relative">
-                  <h3 className={`text-2xl lg:text-3xl font-semibold ${themeClasses.textSecondary}`}>
-                    <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
-                      Bitcoin
-                    </span>{" "}
-                    & Blockchain Expert
-                  </h3>
+                  <H3 className={themeClasses.textSecondary} gradient={false}>
+                    <GradientText>Bitcoin</GradientText> & Blockchain Expert
+                  </H3>
                   <div className="absolute -bottom-2 left-0 w-32 h-1 bg-gradient-to-r from-orange-500 to-transparent rounded-full" />
                 </div>
 
-                <p className={`text-xl ${themeClasses.textMuted} max-w-2xl leading-relaxed`}>
-                  Crafting exceptional user experiences for the decentralized web.
-                  <span className="text-orange-500 font-semibold"> 4+ years</span> specializing in Bitcoin, DeFi, and
+                <P className={`${themeClasses.textMuted} max-w-2xl`}>
+                  Crafting exceptional user experiences for the decentralized web.{" "}
+                  <GradientText className="font-semibold">4+ years</GradientText> specializing in Bitcoin, DeFi, and
                   blockchain applications.
-                </p>
+                </P>
               </div>
 
               <div className="flex flex-wrap gap-4">
@@ -376,40 +377,35 @@ export default function Portfolio() {
         <div className={`absolute inset-0 bg-gradient-to-r ${themeClasses.sectionBg} backdrop-blur-sm`} />
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-purple-500 bg-clip-text text-transparent mb-4 relative">
-              About Me
-              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full" />
-            </h2>
-            <p className={`text-xl ${themeClasses.textSecondary} max-w-3xl mx-auto`}>
+            <SectionTitle>About Me</SectionTitle>
+            <P className={`${themeClasses.textSecondary} max-w-3xl mx-auto`}>
               Passionate frontend developer with deep expertise in blockchain technologies, specializing in Bitcoin and
               DeFi applications that push the boundaries of web3.
-            </p>
+            </P>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 relative">
               <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-orange-500 to-transparent rounded-full" />
 
-              <h3 className={`text-3xl font-bold ${themeClasses.text} relative`}>
-                <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                  4+ Years
-                </span>
+              <H3 className={themeClasses.text} gradient={false}>
+                <GradientText>4+ Years</GradientText>
                 <br />
                 of Blockchain Excellence
-              </h3>
+              </H3>
 
-              <div className={`space-y-4 ${themeClasses.textSecondary} leading-relaxed`}>
-                <p className="relative pl-6">
+              <div className={`space-y-4 ${themeClasses.textSecondary}`}>
+                <P className="relative pl-6">
                   <span className="absolute left-0 top-2 w-2 h-2 bg-orange-500 rounded-full" />
                   I've dedicated my career to mastering the intersection of frontend development and blockchain
                   technology. From building secure Bitcoin wallet interfaces to creating sophisticated DeFi trading
                   platforms, I bring both technical expertise and user-centric design thinking to every project.
-                </p>
-                <p className="relative pl-6">
+                </P>
+                <P className="relative pl-6">
                   <span className="absolute left-0 top-2 w-2 h-2 bg-red-500 rounded-full" />
                   My experience spans the entire blockchain ecosystem - from Bitcoin's Lightning Network to Ethereum's
                   smart contracts, always with a focus on creating intuitive, secure, and performant user interfaces.
-                </p>
+                </P>
               </div>
 
               <div
@@ -418,14 +414,12 @@ export default function Portfolio() {
                 } rounded-lg p-4 backdrop-blur-sm`}
               >
                 <MapPin className="h-5 w-5 text-orange-500" />
-                <span>Available for Remote Work Worldwide</span>
+                <P16>Available for Remote Work Worldwide</P16>
               </div>
             </div>
 
             <div className="space-y-6">
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                Technical Expertise
-              </h3>
+              <H3 gradient={false}>Technical Expertise</H3>
               <div className="grid grid-cols-2 gap-3">
                 {skills.map((skill, index) => (
                   <Badge
@@ -450,14 +444,11 @@ export default function Portfolio() {
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-purple-500 bg-clip-text text-transparent mb-4 relative">
-              Featured Projects
-              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full" />
-            </h2>
-            <p className={`text-xl ${themeClasses.textSecondary} max-w-3xl mx-auto`}>
+            <SectionTitle>Featured Projects</SectionTitle>
+            <P className={`${themeClasses.textSecondary} max-w-3xl mx-auto`}>
               Showcasing cutting-edge blockchain applications that demonstrate my expertise in frontend development and
               web3 integration.
-            </p>
+            </P>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -499,9 +490,7 @@ export default function Portfolio() {
                   >
                     {project.title}
                   </CardTitle>
-                  <CardDescription className={`${themeClasses.textMuted} mb-4 leading-relaxed`}>
-                    {project.description}
-                  </CardDescription>
+                  <CardDescription className={`${themeClasses.textMuted} mb-4`}>{project.description}</CardDescription>
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, techIndex) => (
@@ -541,14 +530,11 @@ export default function Portfolio() {
         <div className={`absolute inset-0 bg-gradient-to-r ${themeClasses.sectionBg} backdrop-blur-sm`} />
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-purple-500 bg-clip-text text-transparent mb-4 relative">
-              Experience
-              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full" />
-            </h2>
-            <p className={`text-xl ${themeClasses.textSecondary} max-w-3xl mx-auto`}>
+            <SectionTitle>Experience</SectionTitle>
+            <P className={`${themeClasses.textSecondary} max-w-3xl mx-auto`}>
               A proven track record of delivering high-impact blockchain solutions across various industries and company
               stages.
-            </p>
+            </P>
           </div>
 
           <div className="space-y-8 relative">
@@ -577,14 +563,14 @@ export default function Portfolio() {
                     <div className="flex-1">
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                         <div>
-                          <h3 className={`text-xl font-semibold ${themeClasses.text}`}>{exp.title}</h3>
-                          <p className="text-orange-500 font-medium">{exp.company}</p>
+                          <H4 className={`${themeClasses.text} text-xl font-semibold`}>{exp.title}</H4>
+                          <H4 className="font-medium">{exp.company}</H4>
                         </div>
                         <Badge variant="outline" className="border-orange-500 text-orange-500 bg-orange-500/10 w-fit">
                           {exp.period}
                         </Badge>
                       </div>
-                      <p className={`${themeClasses.textSecondary} leading-relaxed`}>{exp.description}</p>
+                      <P className={themeClasses.textSecondary}>{exp.description}</P>
                     </div>
                   </div>
                 </CardContent>
@@ -597,14 +583,13 @@ export default function Portfolio() {
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-6xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-purple-500 bg-clip-text text-transparent mb-8 relative">
-            Let's Build the Future
-            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full" />
-          </h2>
-          <p className={`text-xl ${themeClasses.textSecondary} mb-12 max-w-2xl mx-auto leading-relaxed`}>
+          <H1 className="mb-8">Let's Build the Future</H1>
+          <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full" />
+
+          <P className={`${themeClasses.textSecondary} mb-12 max-w-2xl mx-auto`}>
             Ready to create exceptional blockchain experiences? Let's discuss how my expertise can drive your project
             forward.
-          </p>
+          </P>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button
@@ -632,13 +617,10 @@ export default function Portfolio() {
         } relative`}
       >
         <div className="max-w-7xl mx-auto text-center">
-          <p className={themeClasses.textMuted}>
-            © {new Date().getFullYear()} Alexandria Roberts.
-            <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent font-semibold">
-              {" "}
-              Crafted with passion for blockchain innovation.
-            </span>
-          </p>
+          <P16 className={themeClasses.textMuted}>
+            © {new Date().getFullYear()} Alexandria Roberts.{" "}
+            <GradientText className="font-semibold">Crafted with passion for blockchain innovation.</GradientText>
+          </P16>
         </div>
       </footer>
     </div>
