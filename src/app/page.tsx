@@ -331,7 +331,7 @@ export default function Portfolio() {
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
                 {/* Artistic profile image with multiple layers */}
-                <div className="relative w-80 h-80">
+                <div className="relative w-100 h-100">
                   {/* Outer rotating ring */}
                   <div
                     className={`absolute inset-0 rounded-full border-4 border-dashed ${
@@ -417,7 +417,7 @@ export default function Portfolio() {
                 } rounded-lg p-4 backdrop-blur-sm`}
               >
                 <MapPin className="h-5 w-5 text-orange-500" />
-                <P16 className="m-0">Available for Contract Work Worldwide</P16>
+                <P16 className="m-0">Available for Freelance Work Worldwide</P16>
               </div>
             </div>
 
