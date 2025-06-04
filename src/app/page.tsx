@@ -273,12 +273,15 @@ export default function Portfolio() {
                   >
                     Frontend
                   </H1>
+                  <h1
+                      className={`font-['Lora',_serif] text-5xl md:text-7xl lg:text-9xl font-light leading-[0.9] tracking-tight ${themeClasses.text} relative`}
+                    >
+                      Developer
+                      <span className="absolute -right-12 top-0 text-orange-500 animate-bounce text-4xl">✦</span>
+                    </h1>
                 </div>
 
-                <H2 className={themeClasses.text} gradient={false}>
-                  Developer
-                  <span className="absolute -right-8 top-0 text-orange-500 animate-bounce">✦</span>
-                </H2>
+             
 
                 <div className="relative">
                   <H3 className={themeClasses.textSecondary} gradient={false}>
@@ -345,7 +348,7 @@ export default function Portfolio() {
                   {/* Inner gradient background */}
                   <div className="absolute inset-8 rounded-full bg-gradient-to-br from-orange-500 via-red-500 to-purple-500 p-1">
                     <Image
-                      src="/placeholder.svg?height=400&width=400"
+                      src="/profile.png?height=400&width=400"
                       alt="Alexandria Roberts"
                       width={400}
                       height={400}
@@ -380,7 +383,7 @@ export default function Portfolio() {
             <SectionTitle>About Me</SectionTitle>
             <P className={`${themeClasses.textSecondary} max-w-3xl mx-auto`}>
               Passionate frontend developer with deep expertise in blockchain technologies, specializing in Bitcoin and
-              DeFi applications that push the boundaries of web3.
+              DeFi applications that push the boundaries.
             </P>
           </div>
 
@@ -414,12 +417,12 @@ export default function Portfolio() {
                 } rounded-lg p-4 backdrop-blur-sm`}
               >
                 <MapPin className="h-5 w-5 text-orange-500" />
-                <P16>Available for Remote Work Worldwide</P16>
+                <P16 className="m-0">Available for Contract Work Worldwide</P16>
               </div>
             </div>
 
             <div className="space-y-6">
-              <H3 gradient={false}>Technical Expertise</H3>
+              <H3 gradient={true}>Technical Expertise</H3>
               <div className="grid grid-cols-2 gap-3">
                 {skills.map((skill, index) => (
                   <Badge
