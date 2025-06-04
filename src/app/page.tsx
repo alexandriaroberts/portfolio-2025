@@ -192,10 +192,12 @@ export default function Portfolio() {
 
           {/* Geometric patterns */}
           <div className="absolute inset-0">
-            <svg className={`w-full h-full ${isDark ? "opacity-10" : "opacity-5"}`} viewBox="0 0 100 100">
+          
+    
+            <svg className={`w-full h-full ${isDark ? "opacity-5" : "opacity-3"}`} viewBox="0 0 100 100">
               <defs>
                 <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.3" />
                 </pattern>
               </defs>
               <rect width="100" height="100" fill="url(#grid)" className="text-orange-500" />
