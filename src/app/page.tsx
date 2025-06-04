@@ -408,8 +408,9 @@ export default function Portfolio() {
                 </P>
                 <P className="relative pl-6">
                   <span className="absolute left-0 top-2 w-2 h-2 bg-red-500 rounded-full" />
-                  My experience spans the entire blockchain ecosystem - from Bitcoin's Lightning Network to Ethereum's
-                  smart contracts, always with a focus on creating intuitive, secure, and performant user interfaces.
+                  I’ve worked closely with founders, product teams, and fellow engineers in fast-paced startup environments 
+                  to bring complex ideas to life on time and with polish. Whether translating a bounty into a functional 
+                  dApp or fine-tuning UX for mainstream adoption, I thrive at the crossroads of innovation and usability.
                 </P>
               </div>
 
@@ -419,7 +420,7 @@ export default function Portfolio() {
                 } rounded-lg p-4 backdrop-blur-sm`}
               >
                 <MapPin className="h-5 w-5 text-orange-500" />
-                <P16 className="m-0">Available for Freelance Work Worldwide</P16>
+                <P16 className="m-0">Worldwide</P16>
               </div>
             </div>
 
