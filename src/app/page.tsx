@@ -13,6 +13,9 @@ import {
   Globe,
   Sun,
   Moon,
+  Building2,
+  Briefcase,
+  Users,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -20,7 +23,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useEffect, useState } from "react"
-import { H1, H2, H3, H4, P, P16, GradientText, SectionTitle } from "@/components/ui/typography"
+import { H1, H3, H4, P, P16, GradientText, SectionTitle } from "@/components/ui/typography"
 
 export default function Portfolio() {
   // Initialize with null values to prevent hydration mismatch
@@ -59,6 +62,7 @@ export default function Portfolio() {
     "Web3.js",
     "Ethers.js",
     "Solidity",
+    "Nostr Protocol",
     "Bitcoin APIs",
     "Blockchain Integration",
     "DeFi Protocols",
@@ -66,33 +70,37 @@ export default function Portfolio() {
     "Wallet Integration",
     "Node.js",
     "GraphQL",
+    "Redux",
+    "Vue.js",
+    "MongoDB",
   ]
 
   const projects = [
     {
-      title: "DeFi Trading Dashboard",
+      title: "Atob - Bitcoin Delivery App",
       description:
-        "Real-time cryptocurrency trading interface with advanced charting and portfolio management for Bitcoin and Ethereum.",
-      tech: ["React", "TypeScript", "Web3.js", "TradingView"],
+        "Decentralized logistics app built on Nostr protocol with Bitcoin-based delivery flows, real-time relay communication, and QR code delivery confirmation.",
+      tech: ["Next.js", "React", "TypeScript", "Nostr", "Bitcoin"],
       github: "#",
       live: "#",
       image: "/placeholder.svg?height=200&width=300",
       color: "from-orange-500 to-red-500",
     },
     {
-      title: "Bitcoin Wallet Interface",
-      description: "Secure Bitcoin wallet application with multi-signature support and hardware wallet integration.",
-      tech: ["Next.js", "Bitcoin Core", "Lightning Network", "Tailwind"],
+      title: "Web3 Wallet Dashboard",
+      description:
+        "Responsive Web3 dashboard with blockchain features, secure wallet connections with MetaMask, and real-time ETH balance tracking.",
+      tech: ["React", "Next.js", "TypeScript", "Ethers.js", "Wagmi"],
       github: "#",
       live: "#",
       image: "/placeholder.svg?height=200&width=300",
       color: "from-yellow-500 to-orange-500",
     },
     {
-      title: "NFT Marketplace",
+      title: "DiversityChain Job Board",
       description:
-        "Full-featured NFT marketplace with minting, trading, and auction capabilities on Ethereum blockchain.",
-      tech: ["React", "Solidity", "IPFS", "Ethers.js"],
+        "Complete job board platform promoting diversity in blockchain space with custom API endpoints and real-time updates.",
+      tech: ["Next.js", "TailwindCSS", "Node.js", "GraphQL", "Express"],
       github: "#",
       live: "#",
       image: "/placeholder.svg?height=200&width=300",
@@ -102,26 +110,58 @@ export default function Portfolio() {
 
   const experience = [
     {
-      title: "Senior Frontend Developer",
-      company: "Blockchain Startup",
-      period: "2022 - Present",
+      title: "Front-End Developer",
+      company: "Mion Group",
+      period: "Jan 2025 - Present",
       description:
-        "Lead frontend development for DeFi applications, implementing complex trading interfaces and wallet integrations.",
+        "Leading frontend development for Bitcoin payments company. Migrated company blog from Torq to Mion, redesigning and rebuilding it fully in React with Bitcoin brand identity. Contributing to content strategy and SEO optimization.",
+      icon: <Building2 className="h-6 w-6" />,
+      highlights: ["React Migration", "Bitcoin Branding", "SEO Optimization"],
+    },
+    {
+      title: "Freelance Full-Stack Developer",
+      company: "Atob",
+      period: "Apr 2024 - May 2024",
+      description:
+        "Spearheaded end-to-end development of decentralized logistics app on Nostr protocol. Architected production-ready UI with Next.js, integrated multiple auth pathways including Alby extension, and built advanced features like dynamic reputation scoring.",
       icon: <Code className="h-6 w-6" />,
+      highlights: ["Nostr Protocol", "Bitcoin Integration", "Real-time Communication"],
     },
     {
-      title: "Frontend Developer",
-      company: "Crypto Exchange",
-      period: "2021 - 2022",
-      description: "Developed user interfaces for cryptocurrency trading platform serving 100k+ active users.",
+      title: "UI Engineer",
+      company: "Edge & Node",
+      period: "Feb 2022 - Nov 2022",
+      description:
+        "Built and optimized modular UIs for The Graph's protocol using React, Next.js, and ThemeUI. Created reusable components, migrated codebases to TypeScript, and improved performance by 62% through optimization.",
       icon: <Zap className="h-6 w-6" />,
+      highlights: ["The Graph Protocol", "Performance Optimization", "Open Source"],
     },
     {
-      title: "Freelance Developer",
-      company: "Various Clients",
-      period: "2020 - 2021",
-      description: "Built custom blockchain applications and smart contract interfaces for multiple clients.",
+      title: "Front-End Developer",
+      company: "APY Vision",
+      period: "Apr 2021 - Dec 2021",
+      description:
+        "Developed user interfaces for DeFi data platform using React, Redux, and SASS. Integrated smart contract functions, built currency converter handling 10,000+ daily transactions, and worked with multiple blockchain protocols.",
       icon: <Globe className="h-6 w-6" />,
+      highlights: ["DeFi Integration", "Multi-chain Support", "Smart Contracts"],
+    },
+    {
+      title: "Founder & Full-Stack Developer",
+      company: "Mozilla Builders",
+      period: "Apr 2020 - Jan 2021",
+      description:
+        "Founded women mentorship platform, leading team growth to 300+ members. Developed marketing site with Vue.js and SASS, learned Node.js for backend integration, and managed team of 4 volunteers.",
+      icon: <Users className="h-6 w-6" />,
+      highlights: ["Team Leadership", "Vue.js Development", "Community Building"],
+    },
+    {
+      title: "Front-End Developer",
+      company: "Joyjet Digital Space Agency",
+      period: "Sep 2019 - Mar 2020",
+      description:
+        "Engineered user-facing features with HTML5, CSS, and JavaScript. Built WordPress sites with Divi theme, designed email interfaces with Foundation Zurb, and optimized performance using Google Developer Tools.",
+      icon: <Briefcase className="h-6 w-6" />,
+      highlights: ["WordPress Development", "Performance Optimization", "Email Design"],
     },
   ]
 
@@ -192,8 +232,6 @@ export default function Portfolio() {
 
           {/* Geometric patterns */}
           <div className="absolute inset-0">
-          
-    
             <svg className={`w-full h-full ${isDark ? "opacity-5" : "opacity-3"}`} viewBox="0 0 100 100">
               <defs>
                 <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -237,7 +275,7 @@ export default function Portfolio() {
               {["About", "Projects", "Experience", "Contact"].map((item) => (
                 <Link
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={item === "Projects" ? "/projects" : `#${item.toLowerCase()}`}
                   className={`${themeClasses.textSecondary} hover:text-orange-500 transition-all duration-300 relative group`}
                 >
                   {item}
@@ -276,14 +314,12 @@ export default function Portfolio() {
                     Frontend
                   </H1>
                   <h1
-                      className={`font-['Lora',_serif] text-5xl md:text-7xl lg:text-9xl font-light leading-[0.9] tracking-tight ${themeClasses.text} relative`}
-                    >
-                      Developer
-                      <span className="absolute -right-12 top-0 text-orange-500 animate-bounce text-4xl">✦</span>
-                    </h1>
+                    className={`font-['Lora',_serif] text-5xl md:text-7xl lg:text-9xl font-light leading-[0.9] tracking-tight ${themeClasses.text} relative`}
+                  >
+                    Developer
+                    <span className="absolute -right-12 top-0 text-orange-500 animate-bounce text-4xl">✦</span>
+                  </h1>
                 </div>
-
-             
 
                 <div className="relative">
                   <H3 className={themeClasses.textSecondary} gradient={false}>
@@ -294,8 +330,9 @@ export default function Portfolio() {
 
                 <P className={`${themeClasses.textMuted} max-w-2xl`}>
                   Crafting exceptional user experiences for the decentralized web.{" "}
-                  <GradientText className="font-semibold">4+ years</GradientText> specializing in Bitcoin, DeFi, and
-                  blockchain applications.
+                  <GradientText className="font-semibold">3+ years</GradientText> specializing in Bitcoin, DeFi, and
+                  blockchain applications with proven success at Edge & Node, APY Vision, and recent Bitcoin delivery
+                  app MVP.
                 </P>
               </div>
 
@@ -307,14 +344,16 @@ export default function Portfolio() {
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-orange-500 text-orange-500 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-white hover:border-transparent transform hover:scale-105 transition-all duration-300"
-                >
-                  View Projects
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                <Link href="/projects">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-orange-500 text-orange-500 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-white hover:border-transparent transform hover:scale-105 transition-all duration-300"
+                  >
+                    View All Projects
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
               </div>
 
               <div className="flex space-x-6">
@@ -384,8 +423,8 @@ export default function Portfolio() {
           <div className="text-center mb-16">
             <SectionTitle>About Me</SectionTitle>
             <P className={`${themeClasses.textSecondary} max-w-3xl mx-auto`}>
-              Passionate frontend developer with deep expertise in blockchain technologies, specializing in Bitcoin and
-              DeFi applications that push the boundaries.
+              Passionate Front-End Engineer and Bitcoiner with over 3 years of experience in Bitcoin development, Web3, fintech and software companies,
+              specializing in building fast, user-focused interfaces for blockchain and Bitcoin-native applications.
             </P>
           </div>
 
@@ -394,7 +433,7 @@ export default function Portfolio() {
               <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-orange-500 to-transparent rounded-full" />
 
               <H3 className={themeClasses.text} gradient={false}>
-                <GradientText>4+ Years</GradientText>
+                <GradientText>3+ Years</GradientText>
                 <br />
                 of Blockchain Excellence
               </H3>
@@ -402,15 +441,16 @@ export default function Portfolio() {
               <div className={`space-y-4 ${themeClasses.textSecondary}`}>
                 <P className="relative pl-6">
                   <span className="absolute left-0 top-2 w-2 h-2 bg-orange-500 rounded-full" />
-                  I've dedicated my career to mastering the intersection of frontend development and blockchain
-                  technology. From building secure Bitcoin wallet interfaces to creating sophisticated DeFi trading
-                  platforms, I bring both technical expertise and user-centric design thinking to every project.
+                  Recently developed and deployed a full MVP Bitcoin delivery app using Nostr, showcasing strong skills
+                  in architecture, real-time data, and UI design. Proven success delivering production-level work at
+                  Edge & Node and APY Vision, with deep knowledge of web3 and wallet systems.
                 </P>
                 <P className="relative pl-6">
                   <span className="absolute left-0 top-2 w-2 h-2 bg-red-500 rounded-full" />
-                  I’ve worked closely with founders, product teams, and fellow engineers in fast-paced startup environments 
-                  to bring complex ideas to life on time and with polish. Whether translating a bounty into a functional 
-                  dApp or fine-tuning UX for mainstream adoption, I thrive at the crossroads of innovation and usability.
+                  I've worked closely with founders, product teams, and fellow engineers in fast-paced startup
+                  environments to bring complex ideas to life on time and with polish. Whether translating a bounty into
+                  a functional dApp or fine-tuning UX for mainstream adoption, I thrive at the crossroads of innovation
+                  and usability.
                 </P>
               </div>
 
@@ -420,7 +460,7 @@ export default function Portfolio() {
                 } rounded-lg p-4 backdrop-blur-sm`}
               >
                 <MapPin className="h-5 w-5 text-orange-500" />
-                <P16 className="m-0">Worldwide</P16>
+                <P16 className="m-0">Available Worldwide</P16>
               </div>
             </div>
 
@@ -453,7 +493,7 @@ export default function Portfolio() {
             <SectionTitle>Featured Projects</SectionTitle>
             <P className={`${themeClasses.textSecondary} max-w-3xl mx-auto`}>
               Showcasing cutting-edge blockchain applications that demonstrate my expertise in frontend development and
-              web3 integration.
+              web3 integration, from Bitcoin delivery apps to DeFi platforms.
             </P>
           </div>
 
@@ -528,6 +568,19 @@ export default function Portfolio() {
               </Card>
             ))}
           </div>
+
+          <div className="text-center mt-12">
+            <Link href="/projects">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-orange-500 text-orange-500 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-white hover:border-transparent transform hover:scale-105 transition-all duration-300"
+              >
+                View All Projects
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -538,8 +591,8 @@ export default function Portfolio() {
           <div className="text-center mb-16">
             <SectionTitle>Experience</SectionTitle>
             <P className={`${themeClasses.textSecondary} max-w-3xl mx-auto`}>
-              A proven track record of delivering high-impact blockchain solutions across various industries and company
-              stages.
+              A proven track record of delivering high-impact blockchain solutions across Bitcoin apps, Web3
+              protocols, DeFi platforms, and innovative startup environments.
             </P>
           </div>
 
@@ -576,7 +629,24 @@ export default function Portfolio() {
                           {exp.period}
                         </Badge>
                       </div>
-                      <P className={themeClasses.textSecondary}>{exp.description}</P>
+                      <P className={`${themeClasses.textSecondary} mb-4`}>{exp.description}</P>
+
+                      {/* Key highlights */}
+                      <div className="flex flex-wrap gap-2">
+                        {exp.highlights.map((highlight, highlightIndex) => (
+                          <Badge
+                            key={highlightIndex}
+                            variant="secondary"
+                            className={`${
+                              isDark
+                                ? "bg-slate-700/50 text-orange-400 border border-orange-500/30"
+                                : "bg-orange-50 text-orange-600 border border-orange-200"
+                            } text-xs`}
+                          >
+                            {highlight}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </CardContent>
@@ -593,8 +663,8 @@ export default function Portfolio() {
           <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full" />
 
           <P className={`${themeClasses.textSecondary} mb-12 max-w-2xl mx-auto`}>
-            Ready to create exceptional blockchain experiences? Let's discuss how my expertise can drive your project
-            forward.
+            Ready to create exceptional blockchain experiences? Let's discuss how my expertise in Bitcoin, Web3, and
+            frontend development can drive your project forward.
           </P>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
